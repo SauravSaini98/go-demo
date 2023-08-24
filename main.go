@@ -6,6 +6,7 @@ import (
 	"database/sql"
 	"my_project/database"
 	"my_project/api"
+	"my_project/graphql_api"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
@@ -27,5 +28,6 @@ func init() {
 func main() {
     // Database connection parameters
     http.HandleFunc("/api/v1/users", api.HandleUsersApi)
+    http.HandleFunc("/graphql",  graphql_api.HandleGraphQL)
 	http.ListenAndServe(":8080", nil)
 }
